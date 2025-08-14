@@ -1,4 +1,10 @@
 import Dashboard from "@/components/admin/Dashboard";
+import MyProfile from "@/components/admin/MyProfile";
+import MyTrips from "@/components/admin/MyTrips";
+import PersonalInformation from "@/components/admin/PersonalInformation";
+import Security from "@/components/admin/Security";
+import Settings from "@/components/admin/Settings";
+import Wishlist from "@/components/admin/Wishlist";
 import AdminLayout from "@/layout/AdminLayout";
 import AuthLayout from "@/layout/AuthLayout";
 import Layout from "@/layout/Layout";
@@ -27,8 +33,8 @@ const router = createBrowserRouter([
         element: <SignUp/>
       },
       {
-        path: "forget-password",
-        element: <ForgetPassword />
+        path: "forgot-password",
+        element: <ForgetPassword/>
       },
       {
         path: "verify-otp",
@@ -52,13 +58,38 @@ const router = createBrowserRouter([
     ],
   },
   // Admin routes
-  {
+ {
     path: "/dashboard",
     element: <AdminLayout />,
     children: [
       {
         path: "/dashboard",
-        element: <Dashboard />, // ✅ Fixed typo
+        element: <Dashboard />, 
+      },
+      
+      {
+        path: "my-profile",
+        element: <MyProfile />, 
+      },
+      {
+        path: "my-trips",
+        element: <MyTrips />, 
+      },
+      {
+        path: "wishlist",
+        element: <Wishlist />, 
+      },
+      {
+        path: "settings",
+        element: <Settings />, 
+      },
+      {
+        path: "personal-information",
+        element: <PersonalInformation />, 
+      },
+      {
+        path: "security",
+        element: <Security />, 
       },
     ],
   },
