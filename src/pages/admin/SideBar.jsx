@@ -108,7 +108,6 @@ const SideBar = ({ sidebar, open, setOpen }) => {
                     <MdKeyboardArrowDown size={20} />
                   </span>
                 </div>
-
                 {/* Sublinks dropdown */}
                 <div
                   className={`transition-all duration-300 ease-in-out overflow-hidden px-4 border bg-white rounded-lg ${
