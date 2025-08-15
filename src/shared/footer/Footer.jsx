@@ -27,7 +27,7 @@ const Footer = () => {
 
 
   return (
-    <footer className="section-padding-x py-8">
+    <footer className="section-padding-x py-8 ">
       <div className="flex flex-col md:flex-row justify-between w-full gap-8 md:gap-0">
         {/* Logo and Description */}
         <div className="md:max-w-[30%] lg:max-w-[30%] space-y-7">
