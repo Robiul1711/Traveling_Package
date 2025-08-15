@@ -21,13 +21,10 @@ const Banner = () => {
                 className='absolute border h-[35vh] w-full object-cover md:hidden inset-0  '
             />
 
-            {/* Overlay */}
-            <div className='absolute   inset-0 bg-black/50'></div>
-
             {/* Content */}
-            <div className='relative  h-full border border-black flex flex-col  items-center gap-4 text-white px-4 xmd:gap-6'>
+            <div className='relative  h-full flex flex-col justify-center    gap-4 text-white px-4 xmd:gap-6'>
                 <div className="">
-                    <h1 className='text-2xl  md:text-5xl  font-bold font-playfair'>
+                    <h1 className='text-2xl  md:text-5xl  font-bold font-playfair text-[#6B4F3B]'>
                         WE SIMPLIFY THE OUTDOORS
                     </h1>
                 </div>
@@ -39,7 +36,7 @@ const Banner = () => {
                         Whether you’re a beginner or a full-on experienced trekker we've got the right trip for you.
                     </p>
                 </div>
-                <button className='flex items-center gap-2  px-4 py-2 rounded-xl bg-black hover:text-gray-400 transition duration-300 ease-in-out'>
+                <button className='flex w-fit items-center gap-2  px-4 py-2 rounded-xl bg-black hover:text-gray-400 transition duration-300 ease-in-out'>
                     Explore Our Trips
                     <RiArrowRightUpLine />
                 </button>
