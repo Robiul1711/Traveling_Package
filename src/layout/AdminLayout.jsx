@@ -9,8 +9,7 @@ import { MdSpeed } from "react-icons/md";
 import { icons, Settings } from "lucide-react";
 import { MdDataUsage } from "react-icons/md";
 import { FaUnlockKeyhole } from "react-icons/fa6";
-import { RiExchangeLine } from "react-icons/ri";
-import { RiDeleteBinFill } from "react-icons/ri";
+import { MdOutlineTravelExplore } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { MdWorkspacePremium } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
@@ -31,7 +30,7 @@ const AdminLayout = () => {
     },
     {
       id: 2,
-      icon: <MdOutlineDriveFileMove className="text-xl" />,
+      icon: <FaUser />,
       text: "My Profile",
       path: "/dashboard/my-profile",
       activePaths: ["/dashboard/my-profile",],
@@ -39,7 +38,7 @@ const AdminLayout = () => {
     },
     {
       id: 3,
-      icon: <GrCircleInformation />,
+      icon: <MdOutlineTravelExplore />,
       text: "My Trips",
       path: "/dashboard/my-trips",
       activePaths: ["/dashboard/my-trips", ],
@@ -47,7 +46,7 @@ const AdminLayout = () => {
     },
     {
       id: 4,
-      icon: <MdSpeed />,
+      icon: <MdWorkspacePremium />,
       text: "Wishlist",
       path: "/dashboard/wishlist",
       activePaths: ["/dashboard/wishlist"],
@@ -56,14 +55,14 @@ const AdminLayout = () => {
     
     {
       id: 5,
-      icon: <Settings />,
+      icon: <CiSettings />,
       text: "Settings",
       path: "/dashboard/settings",
       activePaths: ["/dashboard/settings"],
       sublink: [
         {
           id: 1,
-          icons: <CiSettings />,
+          icons: <GrCircleInformation />,
           text: "Personal Information",
           path: "/dashboard/personal-information",
         },
@@ -87,7 +86,7 @@ const AdminLayout = () => {
   return (
     <>
       <ScrollRestoration />
-      <div className="flex bg-[#F7F6F3]/10  h-screen min-h-screen w-full">
+      <div className="flex bg-[#ABABAB80]/50  h-screen min-h-screen w-full">
         <SideBar open={Open} setOpen={setOpen} sidebar={sideBar} />
         <div className="flex-1 bg-dark flex flex-col overflow-auto custom-scrollbar">
           <div className=" flex flex-col   ">
