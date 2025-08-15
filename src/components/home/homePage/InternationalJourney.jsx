@@ -1,29 +1,32 @@
 import Title from '@/components/common/Title';
+import { ImageAssets } from '@/utils/ImageProvider';
 import React from 'react';
+import { FaLocationDot, FaLocationPin } from 'react-icons/fa6';
 import { RiArrowRightUpLine } from 'react-icons/ri';
 
 const cards = [
     {
         title: "Maldives",
         packages: 3,
-        img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-        description: "",
-        featured: false,
+        img: ImageAssets.maldivs,
+        description:
+            "A country of breathtaking islands, ancient ruins, and rich cultural heritage.",
+
     },
     {
         title: "Mocorro",
         packages: 3,
-        img: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80",
-        description: "",
-        featured: false,
+        img: ImageAssets.morocorro,
+        description:
+            "A country of breathtaking islands, ancient ruins, and rich cultural heritage.",
     },
     {
         title: "Mexico",
         packages: 3,
-        img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+        img: ImageAssets.mexico,
         description:
             "A country of breathtaking islands, ancient ruins, and rich cultural heritage.",
-        featured: true,
+
     },
 ];
 
@@ -32,42 +35,47 @@ const Card = ({ title, packages, img, description, featured }) => {
 
     return (
         <div
-            className="relative  border transition-all duration-300 group"
+            className="relative transition-all duration-300 group"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
             {/* Image & Overlay */}
             <div className="relative overflow-hidden">
-                <img src={img} alt={title} className="w-full h-full object-cover rounded-xl" />
+                <img src={img} alt={title} className={`w-full ${hovered ? "h-[600px]" : "h-[500px]"} transition-all duration-300 ease-in-out object-cover rounded-xl`} />
 
                 {/* Hover overlay */}
                 <div
-                    className={`absolute inset-0 flex flex-col justify-end p-6 transition-all duration-300
-            ${hovered ? "bg-black/60 opacity-100" : "opacity-0 pointer-events-none"}`}
+                    className={`absolute inset-0 flex flex-col justify-end p-6 transition-all space-y-4 duration-300
+            ${hovered ? "bg-black/60 opacity-100 rounded-xl" : "opacity-0 pointer-events-none"}`}
                 >
-                    <p className="text-white text-sm mb-4">{description}</p>
+                    <h2 className="text-3xl font-bold text-white">{title}</h2>
+                    <div className="flex items-center gap-2 text-xl">
+                        <span><FaLocationDot className='text-yellow-500 text-xl' /></span>
+                        <span className="text-white text-xl">{packages} Packages</span>
+                    </div>
+                    <p className="text-white text-xl mb-4">{description}</p>
 
-                    {featured && (
-                        <div className="flex gap-3">
-                            <button className="bg-white text-black px-4 py-2 rounded-lg font-semibold shadow hover:bg-gray-200 transition-all">
-                                Book Now
-                            </button>
-                            <button className="bg-white/20 text-white px-4 py-2 rounded-lg font-semibold border border-white/40 hover:bg-white/30 transition-all">
-                                Learn More
-                            </button>
-                        </div>
-                    )}
+
+                    <div className="flex gap-3">
+                        <button className="bg-white text-black px-4 py-2 rounded-lg font-semibold shadow hover:bg-gray-200 transition-all w-full">
+                            Book Now
+                        </button>
+                        <button className="bg-white/20 w-full text-white px-4 py-2 rounded-lg font-semibold border border-white/40 hover:bg-white/30 transition-all">
+                            Learn More
+                        </button>
+                    </div>
+
                 </div>
             </div>
 
             {/* Text below image */}
             <div
-                className={`p-4 transition-all duration-300 ${hovered ? "hidden" : "block"
+                className={`p-4 transition-all duration-300 ${hovered ? "opacity-0" : "opacity-100"}
                     }`}
             >
-                <h2 className="text-xl font-bold text-gray-900">{title}</h2>
-                <div className="flex items-center gap-2 text-gray-500 text-sm">
-                    <span>•</span>
+                <h2 className="text-xl font-bold ">{title}</h2>
+                <div className="flex items-center gap-2 text-xl">
+                    <span><FaLocationDot className='text-[#6B4F3B] text-xl' /></span>
                     <span>{packages} Packages</span>
                 </div>
             </div>
