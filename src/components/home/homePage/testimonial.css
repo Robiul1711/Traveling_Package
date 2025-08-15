@@ -1,0 +1,43 @@
+/* Navigation buttons inside slider */
+.custom-nav-btn.inside {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 1px solid #ccc;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.custom-nav-btn.inside:hover {
+  background: #f9f9f9;
+}
+
+.prev-btn {
+  left: 10px; /* inside the slider, near edge */
+}
+
+.next-btn {
+  right: 10px; /* inside the slider, near edge */
+}
+
+/* Pagination dots */
+.swiper-pagination {
+  margin-top: 150px;
+}
+
+.swiper-pagination-bullet {
+  background-color: #d1d5db; /* light gray */
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #1e3a8a; /* dark blue */
+}
