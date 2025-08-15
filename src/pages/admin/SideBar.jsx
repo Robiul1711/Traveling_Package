@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoLogOutOutline } from "react-icons/io5";
 import { FaReact } from "react-icons/fa6";
+import { ImageAssets } from "@/utils/ImageProvider";
 const SideBar = ({ sidebar, open, setOpen }) => {
   const location = useLocation();
   const [activeParentIndex, setActiveParentIndex] = useState(null);
@@ -57,10 +58,8 @@ const SideBar = ({ sidebar, open, setOpen }) => {
         {/* Logo */}
         <Link to={"/"}>
           <div className="flex justify-center items-center">
-            {/* <img src={} alt="Safe" className="h-24 object-contain" /> */}
-            <span>
-              <FaReact size={40} color=" black" />
-            </span>
+            <img src={ImageAssets.logo} alt="Safe" className="h-24 object-contain" />
+  
           </div>
         </Link>
 
@@ -128,6 +127,7 @@ const SideBar = ({ sidebar, open, setOpen }) => {
                         }`}
                         onClick={() => setOpen(false)}
                       >
+                        {value?.icon}
                         {value?.text}
                       </Link>
                     ))}
