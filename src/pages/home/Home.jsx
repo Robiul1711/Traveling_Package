@@ -1,5 +1,7 @@
 import { CommonPageWrapper } from '@/components/common/CommonPageWrapper'
+import GetTravelDeal from '@/components/contact_components/GetTravelDeal'
 import Banner from '@/components/home/homePage/Banner'
+import ContactSection from '@/components/home/homePage/ContactSection'
 import InternationalJourney from '@/components/home/homePage/InternationalJourney'
 import LocalJourney from '@/components/home/homePage/LocalJourney'
 import TestimonialsSlider from '@/components/home/homePage/TestimonialsSlider'
@@ -20,6 +22,8 @@ const Home = () => {
         </CommonPageWrapper>
       </div>
 
+      <GetTravelDeal />
+      <ContactSection />  
     </div>
   )
 }
