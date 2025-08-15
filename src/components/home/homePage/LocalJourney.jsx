@@ -6,24 +6,24 @@ import { Link } from 'react-router-dom';
 
 const cards = [
     {
-        title: "Maldives",
+        title: "Dubai",
         packages: 3,
-        img: ImageAssets.maldivs,
+        img: ImageAssets.Dubai,
         description:
             "A country of breathtaking islands, ancient ruins, and rich cultural heritage.",
 
     },
     {
-        title: "Mocorro",
+        title: "Abu Dhabi",
         packages: 3,
-        img: ImageAssets.morocorro,
+        img: ImageAssets.AbuDhabi,
         description:
             "A country of breathtaking islands, ancient ruins, and rich cultural heritage.",
     },
     {
-        title: "Mexico",
+        title: "Sharjah",
         packages: 3,
-        img: ImageAssets.mexico,
+        img: ImageAssets.sharjah,
         description:
             "A country of breathtaking islands, ancient ruins, and rich cultural heritage.",
 
@@ -83,17 +83,16 @@ const Card = ({ title, packages, img, description, featured }) => {
     );
 };
 
-
-const InternationalJourney = () => {
+const LocalJourney = () => {
     return (
         <div className="py-10">
             <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4 md:gap-0">
-                <p className="font-bold text-2xl xlg:text-4xl">Discover the World, Our International Journey</p>
+                <p className="font-bold text-2xl xlg:text-4xl">Your Next Adventure Starts Here Local</p>
                 <Link to={'/international-trips'}>
                     <button
                         className="flex cursor-pointer items-center gap-2 bg-[#111111] text-white px-6 py-3 rounded-lg font-semibold shadow hover:bg-[#3a3732] transition-all w-fit"
                     >
-                        Explore International Trips
+                        Explore Local Trips
                         <RiArrowRightUpLine />
                     </button>
                 </Link>
@@ -107,4 +106,4 @@ const InternationalJourney = () => {
     );
 };
 
-export default InternationalJourney;
+export default LocalJourney;
