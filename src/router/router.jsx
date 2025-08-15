@@ -13,13 +13,16 @@ import NewPasswordSet from "@/pages/AuthPages/NewPasswordSet";
 import SignIn from "@/pages/AuthPages/SignIn";
 import SignUp from "@/pages/AuthPages/SignUp";
 import VerifyOtp from "@/pages/AuthPages/VerifyOtp";
+import AboutUs from "@/pages/home/aboutPage/AboutUs";
+import ContactUs from "@/pages/home/contactPage/ContactUs";
+import FAQs from "@/pages/home/faqPage/FAQs";
 import Home from "@/pages/home/Home";
 
 
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
-    // Auth
+  // Auth
   {
     path: "/auth",
     element: <AuthLayout />,
@@ -30,11 +33,11 @@ const router = createBrowserRouter([
       },
       {
         path: "sign-up",
-        element: <SignUp/>
+        element: <SignUp />
       },
       {
         path: "forgot-password",
-        element: <ForgetPassword/>
+        element: <ForgetPassword />
       },
       {
         path: "verify-otp",
@@ -55,43 +58,55 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+      {
+        path: "/about-us",
+        element: <AboutUs />
+      },
+      {
+        path: "/faq",
+        element: <FAQs />
+      },
+      {
+        path: "/contact",
+        element: <ContactUs />
+      }
 
     ],
   },
-  
+
   // Admin routes
- {
+  {
     path: "/dashboard",
     element: <AdminLayout />,
     children: [
       {
         path: "/dashboard",
-        element: <Dashboard />, 
+        element: <Dashboard />,
       },
-      
+
       {
         path: "my-profile",
-        element: <MyProfile />, 
+        element: <MyProfile />,
       },
       {
         path: "my-trips",
-        element: <MyTrips />, 
+        element: <MyTrips />,
       },
       {
         path: "wishlist",
-        element: <Wishlist />, 
+        element: <Wishlist />,
       },
       {
         path: "settings",
-        element: <Settings />, 
+        element: <Settings />,
       },
       {
         path: "personal-information",
-        element: <PersonalInformation />, 
+        element: <PersonalInformation />,
       },
       {
         path: "security",
-        element: <Security />, 
+        element: <Security />,
       },
     ],
   },

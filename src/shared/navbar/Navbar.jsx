@@ -4,26 +4,15 @@ import { motion } from "framer-motion";
 import { ImageAssets } from '@/utils/ImageProvider';
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown } from "lucide-react";
+import { CiSearch } from 'react-icons/ci';
+import { CustomCartIcon } from '@/utils/CustomIconProvider';
+import { GlobalNavLinks } from '@/utils/data';
 
 
 
 const Navbar = () => {
 
-  const NavLinks = [
-    { name: "Home", link: "/" },
-    {
-      name: "Buy",
-      link: "/buy",
-      subcategories: [
-        { name: "Sell", link: "/sell" },
-        { name: "About Us", link: "/about" },
-        { name: "Contact Us", link: "/contact" },
-      ],
-    },
-    { name: "Sell", link: "/sell" },
-    { name: "About Us", link: "/about" },
-    { name: "Contact Us", link: "/contact" },
-  ];
+  
 
   const [scrolled, setScrolled] = useState(false);
   const [buyDropdownOpen, setBuyDropdownOpen] = useState(false);
@@ -74,8 +63,8 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation Links (hidden on mobile) */}
-          <div className="hidden lg:flex items-center justify-center gap-8">
-            {NavLinks.map((item, index) => (
+          <div className="hidden lg:flex items-center justify-center gap-8 xlg:text-lg">
+            {GlobalNavLinks.map((item, index) => (
               <div
                 key={index}
                 className="relative"
@@ -85,8 +74,7 @@ const Navbar = () => {
                 {item.subcategories ? (
                   <>
                     <button
-                      className={`relative transition duration-300 font-medium flex items-center gap-2
-              ${scrolled ? "text-black" : "text-white"}
+                      className={`relative transition duration-300 font-medium flex items-center gap-2 text-black
               after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px]
               after:bg-current after:w-0 after:transition-all after:duration-300
               hover:after:w-full`}
@@ -131,12 +119,10 @@ const Navbar = () => {
                   <NavLink
                     to={item.link}
                     className={({ isActive }) =>
-                      `relative transition duration-300 font-medium
-             ${scrolled ? "text-black" : "text-white"}
-             after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px]
+                      `relative transition duration-300 font-medium text-black after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px]
              after:bg-current after:w-0 after:transition-all after:duration-300
              hover:after:w-full
-             ${isActive ? "after:w-full font-semibold" : ""}`
+             ${isActive ? "after:w-full font-semibold" : "text-gray-700"}`
                     }
                   >
                     {item.name}
@@ -145,12 +131,20 @@ const Navbar = () => {
               </div>
             ))}
           </div>
-          <div className="xlg:flex hidden gap-4 items-center">
-            <div className="">
 
-              <Link to={'/contact'}>
-              </Link>
+          <div className="flex gap-4 items-center">
+            <div className="flex items-center gap-2 text-sm bg-[#5d544b] rounded-full py-2 px-4  text-white">
+              <CiSearch className='text-xl' />
+              <input type="text"
+                className='outline-none'
+                placeholder='Search'
+              />
             </div>
+
+            <div className="bg-[#5d544b] rounded-full py-2 px-4 text-white">
+              <CustomCartIcon />
+            </div>
+            <button className="bg-black rounded-full py-2 px-4 text-white">Sign Up</button>
           </div>
         </div>
       </div>
