@@ -18,6 +18,7 @@ import ContactUs from "@/pages/home/contactPage/ContactUs";
 import FAQs from "@/pages/home/faqPage/FAQs";
 import Home from "@/pages/home/Home";
 import InternationalTrip from "@/pages/home/internationalTrip/InternationalTrip";
+import TripDetails from "@/pages/home/tripDetailsPage/TripDetails";
 
 
 import { createBrowserRouter } from "react-router-dom";
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: "/international-trips",
         element: <InternationalTrip />
+      },
+      {
+        path: "/trip-details",
+        element: <TripDetails />
       }
 
     ],
