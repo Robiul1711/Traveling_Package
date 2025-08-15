@@ -46,6 +46,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // Main website routes 
   {
     path: "/",
     element: <Layout />,
@@ -57,6 +58,7 @@ const router = createBrowserRouter([
 
     ],
   },
+  
   // Admin routes
  {
     path: "/dashboard",
