@@ -14,10 +14,12 @@ import SignIn from "@/pages/AuthPages/SignIn";
 import SignUp from "@/pages/AuthPages/SignUp";
 import VerifyOtp from "@/pages/AuthPages/VerifyOtp";
 import AboutUs from "@/pages/home/aboutPage/AboutUs";
+import BookingForm from "@/pages/home/bookingFormPage/BookingForm";
 import ContactUs from "@/pages/home/contactPage/ContactUs";
 import FAQs from "@/pages/home/faqPage/FAQs";
 import Home from "@/pages/home/Home";
 import InternationalTrip from "@/pages/home/internationalTrip/InternationalTrip";
+import TripDetails from "@/pages/home/tripDetailsPage/TripDetails";
 
 
 import { createBrowserRouter } from "react-router-dom";
@@ -74,6 +76,14 @@ const router = createBrowserRouter([
       {
         path: "/international-trips",
         element: <InternationalTrip />
+      },
+      {
+        path: "/trip-details",
+        element: <TripDetails />
+      },
+      {
+        path: "/booking-form",
+        element: <BookingForm />
       }
 
     ],
