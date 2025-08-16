@@ -10,6 +10,9 @@ import { CommonPageWrapper } from '@/components/common/CommonPageWrapper';
 import { TiLocation } from "react-icons/ti";
 import { FaClock, FaUserLarge } from 'react-icons/fa6';
 import { HiCurrencyDollar } from "react-icons/hi2";
+import GetTravelDeal from '@/components/contact_components/GetTravelDeal';
+import Availability from './Availability';
+import ITINERARY from './ITINERARY';
 
 const testimonials = [
     {
@@ -66,66 +69,75 @@ const TripDetails = () => {
     return (
         <div>
             <CommonBanner title="Grand Greece Adventure" image={ImageAssets.tripDetailsBanner} />
-            <Swiper
-                modules={[Navigation]}
-                onSwiper={(swiper) => {
-                    swiperRef.current = swiper;
-                }}
-                slidesPerView={2}
-                spaceBetween={20}
-                pagination={{ clickable: true }}
-
-                breakpoints={{
-                    0: { slidesPerView: 1 },
-                    768: { slidesPerView: 5 },
-                }}
-                className="testimonial-swiper !p-5"
+            <div className=""
+                style={{ backgroundImage: `url(${ImageAssets.particalBg})` }}
             >
-                {testimonials.map((t, i) => (
-                    <SwiperSlide key={i}>
-                        <div className="">
-                            <img
-                                src={t.image}
-                                alt={t.name}
-                                className="  object-cover"
-                            />
+                <Swiper
+                    modules={[Navigation]}
+                    onSwiper={(swiper) => {
+                        swiperRef.current = swiper;
+                    }}
+                    slidesPerView={2}
+                    spaceBetween={20}
+                    pagination={{ clickable: true }}
 
-                        </div>
-                    </SwiperSlide>
-                ))}
+                    breakpoints={{
+                        0: { slidesPerView: 1 },
+                        768: { slidesPerView: 5 },
+                    }}
+                    className="testimonial-swiper !p-5"
+                >
+                    {testimonials.map((t, i) => (
+                        <SwiperSlide key={i}>
+                            <div className="">
+                                <img
+                                    src={t.image}
+                                    alt={t.name}
+                                    className="  object-cover"
+                                />
+
+                            </div>
+                        </SwiperSlide>
+                    ))}
 
 
-            </Swiper>
-            <CommonPageWrapper>
-                <div className="">
-                    <p className="text-2xl xlg:text-4xl font-semibold">OVERVIEW</p>
-                    <p className="text-sm xlg:text-xl">
-                        Embark on a 8-day journey through the heart and soul of Greece, where ancient wonders meet stunning landscapes and timeless traditions. Begin in Athens, the cradle of democracy, where ancient ruins stand proudly among bustling neighborhoods. Travel to Meteora, where majestic monasteries perch atop towering rock formations, and then venture south to Crete, Greece’s largest island, full of mythical palaces, mountain trails, and coastal charm. Enjoy wine tastings, scenic hikes, cultural workshops, and incredible local cuisine in a tour perfect for history buffs, nature lovers, and adventurous travelers alike.
-                    </p>
+                </Swiper>
+                <CommonPageWrapper>
+                    <div className="space-y-5">
+                        <p className="text-2xl xlg:text-4xl font-semibold">OVERVIEW</p>
+                        <p className="text-sm xlg:text-xl">
+                            Embark on a 8-day journey through the heart and soul of Greece, where ancient wonders meet stunning landscapes and timeless traditions. Begin in Athens, the cradle of democracy, where ancient ruins stand proudly among bustling neighborhoods. Travel to Meteora, where majestic monasteries perch atop towering rock formations, and then venture south to Crete, Greece’s largest island, full of mythical palaces, mountain trails, and coastal charm. Enjoy wine tastings, scenic hikes, cultural workshops, and incredible local cuisine in a tour perfect for history buffs, nature lovers, and adventurous travelers alike.
+                        </p>
 
-                    <div className="flex gap-5">
-                        <div className="flex gap-2">
-                            <TiLocation className='text-2xl text-[#006C9A]' />
-                            <p>Greece</p>
-                        </div>
+                        <div className="flex gap-5 items-center">
+                            <div className="flex gap-2">
+                                <TiLocation className='text-2xl text-[#006C9A]' />
+                                <p>Greece</p>
+                            </div>
 
-                        <div className="flex gap-2">
-                            <FaClock className='text-xl text-[#006C9A]' />
-                            <p>8 Days</p>
-                        </div>
+                            <div className="flex gap-2">
+                                <FaClock className='text-xl text-[#006C9A]' />
+                                <p>8 Days</p>
+                            </div>
 
-                        <div className="flex gap-2">
-                            <HiCurrencyDollar className='text-2xl text-[#006C9A]' />
-                            <p>8 Days</p>
-                        </div>
-                        <div className="flex gap-2">
-                            <FaUserLarge className='text-xl text-[#006C9A]' />
-                            <p>8 Days</p>
+                            <div className="flex gap-2">
+                                <HiCurrencyDollar className='text-2xl text-[#006C9A]' />
+                                <p>Start from
+                                    $3,200.00</p>
+                            </div>
+                            <div className="flex gap-2">
+                                <FaUserLarge className='text-xl text-[#006C9A]' />
+                                <p>15 People</p>
+                            </div>
+
+                            <button className='bg-[#614836] text-white px-4 py-2 rounded-md'>Book Now</button>
                         </div>
                     </div>
-                </div>
-
-            </CommonPageWrapper>
+                    <Availability />
+                    <ITINERARY />
+                </CommonPageWrapper>
+            </div>
+            <GetTravelDeal />
         </div>
     );
 };
