@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Flex, Modal } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const disclaimerData = {
     title: "Acknowledgment of Risks",
@@ -77,7 +78,13 @@ const disclaimerData = {
 
 const DisclaimerModal = ({ page }) => {
     const [openResponsive, setOpenResponsive] = useState(false);
-    
+    const navigate = useNavigate();
+
+    const handleAccept = () => {
+        setOpenResponsive(false)
+        navigate("/booking-form");
+    }
+
     const renderContent = (section) => {
         if (section.type === "paragraph") {
             return (
@@ -86,7 +93,7 @@ const DisclaimerModal = ({ page }) => {
                 </p>
             );
         }
-        
+
         if (section.type === "list") {
             return (
                 <ul className="space-y-2 text-gray-700">
@@ -99,10 +106,10 @@ const DisclaimerModal = ({ page }) => {
                 </ul>
             );
         }
-        
+
         return null;
     };
-    
+
     return (
         <Flex vertical gap="middle" align="flex-start">
             {/* Book Now Button */}
@@ -110,7 +117,7 @@ const DisclaimerModal = ({ page }) => {
                 onClick={() => setOpenResponsive(true)}
                 className="bg-black hover:bg-[#4a3729] w-full py-4 text-white px-6 text-lg rounded-2xl cursor-pointer font-semibold transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
-                {page === "tripDetails" ? "Book Now" : "Book Your Adventure"}
+                 Book Now
             </button>
 
             <Modal
@@ -142,7 +149,7 @@ const DisclaimerModal = ({ page }) => {
                     </button>,
                     <button
                         key="accept"
-                        onClick={() => setOpenResponsive(false)}
+                        onClick={handleAccept}
                         className="px-8 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-semibold ml-4"
                     >
                         {disclaimerData.buttons.accept}
