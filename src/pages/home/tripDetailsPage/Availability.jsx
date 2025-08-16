@@ -1,3 +1,4 @@
+import DisclaimerModal from '@/components/common/DisclaimerModal';
 import React from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { FaXmark } from 'react-icons/fa6';
@@ -62,7 +63,8 @@ const Availability = () => {
                     <p className="lg:text-xl font-bold border-b  pb-2">Available Date(s)</p>
                     <p className="">November 6, 2025 to November 26, 2025</p>
                     <p className="text-sm"><span className="text-[#614836] font-bold text-2xl">28,800 SAR</span> / per-person - (14) Seat available</p>
-                    <button className="bg-black w-full py-3 text-white px-4 text-lg rounded-2xl">Book Now</button>
+
+                    <DisclaimerModal page="tripDetails" />
                 </div>
             </div>
         </div>
