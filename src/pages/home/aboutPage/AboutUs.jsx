@@ -1,3 +1,4 @@
+import MeetTheTeam from '@/components/About_Components/MeetTheTeam';
 import OurStory from '@/components/About_Components/OurStory';
 import CommonBanner from '@/components/common/CommonBanner';
 import { ImageAssets } from '@/utils/MyImageProvider';
@@ -8,6 +9,7 @@ const AboutUs = () => {
         <div>
            <CommonBanner title="About Us" image={ImageAssets.aboutBg} />
            <OurStory />
+           <MeetTheTeam />
         </div>
     );
 };
