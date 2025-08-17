@@ -19,6 +19,7 @@ import ContactUs from "@/pages/home/contactPage/ContactUs";
 import FAQs from "@/pages/home/faqPage/FAQs";
 import Home from "@/pages/home/Home";
 import InternationalTrip from "@/pages/home/internationalTrip/InternationalTrip";
+import LocalTrip from "@/pages/home/localTripPage/LocalTrip";
 import TripDetails from "@/pages/home/tripDetailsPage/TripDetails";
 
 
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
       {
         path: "/international-trips",
         element: <InternationalTrip />
+      },
+      {
+        path: "/local-trips",
+        element: <LocalTrip />
       },
       {
         path: "/trip-details",
