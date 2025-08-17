@@ -12,7 +12,7 @@ import { GlobalNavLinks } from '@/utils/data';
 
 const Navbar = () => {
 
-  
+
 
   const [scrolled, setScrolled] = useState(false);
   const [buyDropdownOpen, setBuyDropdownOpen] = useState(false);
@@ -94,8 +94,8 @@ const Navbar = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 z-50
-                ${scrolled ? "bg-white" : "bg-gray-800"}`}
+                        className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 z-50 bg-white text-black
+                `}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                       >
@@ -103,10 +103,7 @@ const Navbar = () => {
                           <NavLink
                             key={subIndex}
                             to={`/buy-details/${subItem._id}`}
-                            className={`block px-4 py-2 text-sm ${scrolled
-                              ? "text-gray-700 hover:bg-gray-100"
-                              : "text-white hover:bg-gray-700"
-                              }`}
+                            className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 `}
                             onClick={() => setBuyDropdownOpen(false)}
                           >
                             {subItem.name}

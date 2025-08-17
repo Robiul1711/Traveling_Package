@@ -88,7 +88,7 @@ const LocalJourney = () => {
         <div className="py-10">
             <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4 md:gap-0">
                 <p className="font-bold text-2xl xlg:text-4xl">Your Next Adventure Starts Here Local</p>
-                <Link to={'/international-trips'}>
+                <Link to={'/local-trips'}>
                     <button
                         className="flex cursor-pointer items-center gap-2 bg-[#111111] text-white px-6 py-3 rounded-lg font-semibold shadow hover:bg-[#3a3732] transition-all w-fit"
                     >
