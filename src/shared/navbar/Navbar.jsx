@@ -102,7 +102,7 @@ const Navbar = () => {
                         {item.subcategories.map((subItem, subIndex) => (
                           <NavLink
                             key={subIndex}
-                            to={`/buy-details/${subItem._id}`}
+                            to={`${subItem.link}`}
                             className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 `}
                             onClick={() => setBuyDropdownOpen(false)}
                           >
