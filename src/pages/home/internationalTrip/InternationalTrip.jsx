@@ -6,7 +6,7 @@ import { BsCalendarDate, BsClock } from 'react-icons/bs';
 import { FaArrowRight, FaRunning } from 'react-icons/fa';
 import TripFilterInternational from './TripFilterInternational';
 import { useMediaQuery } from 'react-responsive';
-import { Link } from 'react-router-dom';
+import { Link, ScrollRestoration } from 'react-router-dom';
 import CommonBanner from '@/components/common/CommonBanner';
 import { ImageAssets } from '@/utils/ImageProvider';
 
@@ -119,6 +119,7 @@ const InternationalTrip = () => {
     console.log(isDesktopOrLaptop);
     return (
         <>
+            <ScrollRestoration />
             <CommonBanner title="International Experiences" image={ImageAssets.tripBanner} />
             <div className='bg-[#FAF8F2] section-padding-x py-10'>
                 <div className="flex justify-end xmd:hidden py-5">
@@ -126,11 +127,11 @@ const InternationalTrip = () => {
                 </div>
 
                 <div className="flex flex-col xmd:flex-row  gap-4 sm:gap-6 lg:gap-8">
-                    <div className={`w-full xmd:w-[20%] ${showFilter ? "block" : "hidden"}`}>
+                    <div className={`w-full xmd:w-[30%] ${showFilter ? "block" : "hidden"}`}>
                         <TripFilterInternational />
                     </div>
 
-                    <div className="w-full lg:w-[80%]">
+                    <div className="w-full lg:w-[70%]">
                         <div className="grid grid-cols-1 sm:grid-cols-2 xlg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                             {
                                 MoreTripsData.map((trip) => (

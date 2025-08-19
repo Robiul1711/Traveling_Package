@@ -78,7 +78,7 @@ const ITINERARY = () => {
                                     </div>
                                 </div>
                             </AccordionTrigger>
-                            <AccordionContent className="px-8 pb-6 ml-20">
+                            <AccordionContent className="px-8 pb-6 lg:ml-20">
                                 <div className="space-y-6">
                                     <div className="rounded-xl overflow-hidden">
                                         <img

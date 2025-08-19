@@ -13,6 +13,7 @@ import { HiCurrencyDollar } from "react-icons/hi2";
 import GetTravelDeal from '@/components/contact_components/GetTravelDeal';
 import Availability from './Availability';
 import ITINERARY from './ITINERARY';
+import { ScrollRestoration } from 'react-router-dom';
 
 const testimonials = [
     {
@@ -68,6 +69,7 @@ const TripDetails = () => {
 
     return (
         <div>
+            <ScrollRestoration />
             <CommonBanner title="Grand Greece Adventure" image={ImageAssets.tripDetailsBanner} />
             <div className=""
                 style={{ backgroundImage: `url(${ImageAssets.particalBg})` }}
@@ -82,7 +84,7 @@ const TripDetails = () => {
                     pagination={{ clickable: true }}
 
                     breakpoints={{
-                        0: { slidesPerView: 1 },
+                        0: { slidesPerView: 3 },
                         768: { slidesPerView: 5 },
                     }}
                     className="testimonial-swiper !p-5"
@@ -109,7 +111,7 @@ const TripDetails = () => {
                             Embark on a 8-day journey through the heart and soul of Greece, where ancient wonders meet stunning landscapes and timeless traditions. Begin in Athens, the cradle of democracy, where ancient ruins stand proudly among bustling neighborhoods. Travel to Meteora, where majestic monasteries perch atop towering rock formations, and then venture south to Crete, Greece’s largest island, full of mythical palaces, mountain trails, and coastal charm. Enjoy wine tastings, scenic hikes, cultural workshops, and incredible local cuisine in a tour perfect for history buffs, nature lovers, and adventurous travelers alike.
                         </p>
 
-                        <div className="flex gap-5 items-center">
+                        <div className="flex flex-wrap gap-5 items-center">
                             <div className="flex gap-2">
                                 <TiLocation className='text-2xl text-[#006C9A]' />
                                 <p>Greece</p>
