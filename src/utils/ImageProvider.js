@@ -15,10 +15,12 @@ import tripDetailsBanner from '@/assets/ashikur_image/tripDetails.png'
 import tripImage1 from '@/assets/ashikur_image/tripImage1.png'
 import tripImage2 from '@/assets/ashikur_image/tripImage2.png'
 import tripImage3 from '@/assets/ashikur_image/tripImage3.png'
+import tripBanner from '@/assets/ashikur_image/TripBanner.png'
 
 
 
 export const ImageAssets = {
+    tripBanner,
     logo,
     banner,
     trip1,

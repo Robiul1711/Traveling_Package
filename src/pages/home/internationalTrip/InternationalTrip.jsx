@@ -1,10 +1,14 @@
 import Title from '@/components/common/Title';
-import { tripsData } from '@/utils/data';
+import { MoreTripsData, tripsData } from '@/utils/data';
 import { Heart } from 'lucide-react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsCalendarDate, BsClock } from 'react-icons/bs';
 import { FaArrowRight, FaRunning } from 'react-icons/fa';
 import TripFilterInternational from './TripFilterInternational';
+import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router-dom';
+import CommonBanner from '@/components/common/CommonBanner';
+import { ImageAssets } from '@/utils/ImageProvider';
 
 const InternationalTripCard = ({ trip }) => {
     return (
@@ -35,7 +39,7 @@ const InternationalTripCard = ({ trip }) => {
             </Title>
 
             {/* Improved Details Row */}
-            <div className="grid grid-cols-2 gap-2 sm:gap-3 mt-3 sm:mt-4">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-3 sm:mt-4">
                 {/* Difficulty */}
                 <div className="flex flex-col items-center bg-[#FAF8F2] rounded-lg sm:rounded-xl p-2 sm:p-3">
                     <Title level="title18" className="text-xs sm:text-sm md:text-base text-center mb-1 sm:mb-2">
@@ -90,31 +94,54 @@ const InternationalTripCard = ({ trip }) => {
             </div>
 
             {/* Button */}
-            <button className="mt-3 sm:mt-4 w-full flex items-center justify-center gap-2 bg-black text-white py-2 sm:py-3 rounded-lg sm:rounded-xl hover:bg-gray-900 text-sm sm:text-base">
-                View Details <FaArrowRight size={14} />
-            </button>
+            <Link to={'/trip-details'}>
+                <button className="mt-3 cursor-pointer sm:mt-4 w-full flex items-center justify-center gap-2 bg-black text-white py-2 sm:py-3 rounded-lg sm:rounded-xl hover:bg-gray-900 text-sm sm:text-base">
+                    View Details <FaArrowRight size={14} />
+                </button>
+            </Link>
+
         </div>
     )
 }
 
 const InternationalTrip = () => {
+    const [showFilter, setShowFilter] = useState(true);
+    const isDesktopOrLaptop = useMediaQuery({ maxWidth: 992 })
+
+    useEffect(() => {
+        if (isDesktopOrLaptop) {
+            setShowFilter(false)
+        } else {
+            setShowFilter(true)
+        }
+    }, [isDesktopOrLaptop])
+
+    console.log(isDesktopOrLaptop);
     return (
-        <div className='bg-[#FAF8F2]'>
-            <div className="flex flex-col lg:flex-row section-padding-x gap-4 sm:gap-6 lg:gap-8">
-                <div className="w-full lg:w-[30%]">
-                    <TripFilterInternational />
+        <>
+            <CommonBanner title="International Experiences" image={ImageAssets.tripBanner} />
+            <div className='bg-[#FAF8F2] section-padding-x py-10'>
+                <div className="flex justify-end xmd:hidden py-5">
+                    <button onClick={() => setShowFilter(!showFilter)} className=' bg-white text-black px-4 py-2 rounded-lg font-semibold shadow hover:bg-gray-200 transition-all'>{showFilter ? "Hide Filter" : "Show Filter"}</button>
                 </div>
-                <div className="w-full lg:w-[70%]">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xlg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                        {
-                            tripsData.map((trip) => (
-                                <InternationalTripCard key={trip.id} trip={trip} />
-                            ))
-                        }
+
+                <div className="flex flex-col xmd:flex-row  gap-4 sm:gap-6 lg:gap-8">
+                    <div className={`w-full xmd:w-[20%] ${showFilter ? "block" : "hidden"}`}>
+                        <TripFilterInternational />
+                    </div>
+
+                    <div className="w-full lg:w-[80%]">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 xlg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                            {
+                                MoreTripsData.map((trip) => (
+                                    <InternationalTripCard key={trip.id} trip={trip} />
+                                ))
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
