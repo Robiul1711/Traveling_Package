@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Calendar, ChevronDown } from "lucide-react";
 
-const TripFilterInternational = () => {
+const TripFilterLocal = () => {
+
     const [destination, setDestination] = useState("");
     const [priceRange, setPriceRange] = useState([0, 900]);
     const [duration, setDuration] = useState([0, 21]);
@@ -223,4 +224,4 @@ const TripFilterInternational = () => {
     );
 };
 
-export default TripFilterInternational;
+export default TripFilterLocal;
