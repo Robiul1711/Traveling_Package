@@ -141,7 +141,9 @@ const Navbar = () => {
             <div className="bg-[#5d544b] rounded-full py-2 px-4 text-white">
               <CustomCartIcon />
             </div>
-            <button className="bg-black rounded-full py-2 px-4 text-white">Sign Up</button>
+            <Link to={'/auth/sign-in'}>
+              <button className="bg-black rounded-full py-2 px-4 text-white">Sign Up</button>
+            </Link>
           </div>
         </div>
       </div>

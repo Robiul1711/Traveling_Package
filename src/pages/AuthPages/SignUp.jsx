@@ -5,29 +5,43 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { BeatLoader } from "react-spinners";
 import CommonButton from "@/components/common/CommonButton";
+import toast from "react-hot-toast";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
+
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm({
-    defaultValues: {
-      fullName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    },
-  });
+  } = useForm();
 
-  const password = watch("password");
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+    const toastId = toast.loading("Signing Up...");
+
+    const payload = {
+      name: data.name,
+      login: data.email,
+      email: data.email,
+      password: data.password,
+    }
+    console.log(payload)
+    try {
+      const res = await axiosPublic.post('/odoo/register', payload)
+      if (res) {
+        toast.success("Sign Up Successful", { id: toastId });
+        navigate("/auth/sign-in");
+      }
+    } catch (error) {
+      toast.error("Sign Up Failed");
+    }
   };
   return (
     <div className="w-full max-w-lg bg-[#6B4F3B]/50 backdrop-blur-sm text-white rounded-xl p-4 sm:p-8 ">
@@ -52,15 +66,14 @@ export default function SignUp() {
             <input
               id="fullName"
               type="text"
-              {...register("fullName", {
+              {...register("name", {
                 required: "Full Name is required",
               })}
               placeholder="John Doe"
-              className={`w-full pl-10 pr-12 py-3  bg-[#11111180] rounded-lg text-sm focus:ring-1 focus:outline-none transition ${
-                errors.fullName
-                  ? "border-red-500 focus:ring-red-300"
-                  : "border-gray-300 focus:ring-blue-500"
-              }`}
+              className={`w-full pl-10 pr-12 py-3  bg-[#11111180] rounded-lg text-sm focus:ring-1 focus:outline-none transition ${errors.fullName
+                ? "border-red-500 focus:ring-red-300"
+                : "border-gray-300 focus:ring-blue-500"
+                }`}
             />
           </div>
           {errors.fullName && (
@@ -88,11 +101,10 @@ export default function SignUp() {
                 },
               })}
               placeholder="you@example.com"
-              className={`w-full pl-10 pr-12 py-3  bg-[#11111180] rounded-lg text-sm focus:ring-1 focus:outline-none transition ${
-                errors.email
-                  ? "border-red-500 focus:ring-red-300"
-                  : "border-gray-300 focus:ring-blue-500"
-              }`}
+              className={`w-full pl-10 pr-12 py-3  bg-[#11111180] rounded-lg text-sm focus:ring-1 focus:outline-none transition ${errors.email
+                ? "border-red-500 focus:ring-red-300"
+                : "border-gray-300 focus:ring-blue-500"
+                }`}
             />
           </div>
           {errors.email && (
@@ -118,11 +130,10 @@ export default function SignUp() {
                 },
               })}
               placeholder="••••••••"
-              className={`w-full pl-10 pr-12 py-3  bg-[#11111180] rounded-lg text-sm focus:ring-1 focus:outline-none transition ${
-                errors.password
-                  ? "border-red-500 focus:ring-red-300"
-                  : " focus:ring-blue-500"
-              }`}
+              className={`w-full pl-10 pr-12 py-3  bg-[#11111180] rounded-lg text-sm focus:ring-1 focus:outline-none transition ${errors.password
+                ? "border-red-500 focus:ring-red-300"
+                : " focus:ring-blue-500"
+                }`}
             />
             <button
               type="button"
@@ -144,7 +155,7 @@ export default function SignUp() {
         </div>
 
         {/* Confirm Password */}
-        <div>
+        {/* <div>
           <label
             htmlFor="confirmPassword"
             className="block text-sm font-medium  mb-2"
@@ -162,11 +173,10 @@ export default function SignUp() {
                   value === password || "Passwords do not match",
               })}
               placeholder="••••••••"
-              className={`w-full pl-10 pr-12 py-3  bg-[#11111180] rounded-lg text-sm focus:ring-1 focus:outline-none transition ${
-                errors.confirmPassword
-                  ? "border-red-500 focus:ring-red-300"
-                  : "border-gray-300 focus:ring-blue-500"
-              }`}
+              className={`w-full pl-10 pr-12 py-3  bg-[#11111180] rounded-lg text-sm focus:ring-1 focus:outline-none transition ${errors.confirmPassword
+                ? "border-red-500 focus:ring-red-300"
+                : "border-gray-300 focus:ring-blue-500"
+                }`}
             />
             <button
               type="button"
@@ -185,7 +195,7 @@ export default function SignUp() {
               {errors.confirmPassword.message}
             </p>
           )}
-        </div>
+        </div> */}
 
         {/* Submit Button */}
         <CommonButton
