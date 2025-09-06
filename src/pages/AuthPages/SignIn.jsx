@@ -36,6 +36,7 @@ export default function SignIn() {
       const res = await axiosPublic.post('/odoo/login', data)
       if (res) {
         toast.success("Sign In Successful", { id: toastId });
+        navigate("/dashboard")
         reset();
       }
     } catch (err) {
@@ -178,7 +179,7 @@ export default function SignIn() {
           to={"/auth/sign-up"}
           className="text-blue-600 hover:underline font-medium"
         >
-          Sign In
+          Sign Up
         </Link>
       </div>
     </div>

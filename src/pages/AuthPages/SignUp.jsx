@@ -37,6 +37,7 @@ export default function SignUp() {
       const res = await axiosPublic.post('/odoo/register', payload)
       if (res) {
         toast.success("Sign Up Successful", { id: toastId });
+        navigate("/auth/sign-in");
       }
     } catch (error) {
       toast.error("Sign Up Failed");
