@@ -9,6 +9,7 @@ import { Link, ScrollRestoration } from 'react-router-dom';
 import CommonBanner from '@/components/common/CommonBanner';
 import { ImageAssets } from '@/utils/ImageProvider';
 import TripFilterLocal from './TripFilterLocal';
+import { useGetAllLocalProducts } from '@/hooks/ProductHooks';
 
 
 const LocalTripCard = ({ trip }) => {
@@ -17,8 +18,8 @@ const LocalTripCard = ({ trip }) => {
             {/* Image Section */}
             <div className="relative rounded-xl sm:rounded-2xl overflow-hidden">
                 <img
-                    src={trip.image}
-                    alt={trip.title}
+                    src={trip?.image_url}
+                    alt={trip?.name}
                     className="w-full h-48 sm:h-56 object-cover"
                 />
                 {/* Badges remain the same */}
@@ -36,7 +37,7 @@ const LocalTripCard = ({ trip }) => {
 
             {/* Title */}
             <Title level="title24" className="mt-3 sm:mt-4">
-                {trip.title}
+                {trip?.name}
             </Title>
 
             {/* Improved Details Row */}
@@ -85,12 +86,12 @@ const LocalTripCard = ({ trip }) => {
             <div className="mt-3 sm:mt-4">
                 <p className="text-xs sm:text-sm text-gray-500">Price / person</p>
                 <div className="flex items-center gap-2">
-                    <span className="text-lg sm:text-xl font-bold text-black">{trip.price}</span>
-                    {trip.oldPrice && (
-                        <span className="text-gray-400 line-through text-xs sm:text-sm">
-                            {trip.oldPrice}
-                        </span>
-                    )}
+                    <span className="text-lg sm:text-xl font-bold text-black">{trip.list_price}</span>
+                    {/* {trip?.list_price && (
+                                <span className="text-gray-400 line-through text-xs sm:text-sm">
+                                    {trip.list_price}
+                                </span>
+                            )} */}
                 </div>
             </div>
 
@@ -109,6 +110,8 @@ const LocalTrip = () => {
 
     const [showFilter, setShowFilter] = useState(true);
     const isDesktopOrLaptop = useMediaQuery({ maxWidth: 992 })
+
+    const { data: products } = useGetAllLocalProducts();
 
     useEffect(() => {
         if (isDesktopOrLaptop) {
@@ -137,7 +140,7 @@ const LocalTrip = () => {
                     <div className="w-full xmd:w-[70%]">
                         <div className="grid grid-cols-1 sm:grid-cols-2 xlg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                             {
-                                MoreTripsData.map((trip) => (
+                                products?.map((trip) => (
                                     <LocalTripCard key={trip.id} trip={trip} />
                                 ))
                             }

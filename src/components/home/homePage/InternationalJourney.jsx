@@ -1,4 +1,4 @@
-import { useGetAllProducts } from '@/hooks/ProductHooks';
+import { useGetAllInternationalProducts } from '@/hooks/ProductHooks';
 import { ImageAssets } from '@/utils/ImageProvider';
 import React from 'react';
 import { FaLocationDot } from 'react-icons/fa6';
@@ -63,13 +63,12 @@ const Card = ({ name, qty_available, image_url, description, featured }) => {
 
 const InternationalJourney = () => {
 
-    // const { products } = useGetAllProducts();
-    const { data: products } = useGetAllProducts();
+    const { data: products } = useGetAllInternationalProducts();
 
     return (
         <div className="py-10">
             <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4 md:gap-0">
-                <p className="font-bold text-2xl xlg:text-4xl">Discover the World, Our International Journey222</p>
+                <p className="font-bold text-2xl xlg:text-4xl">Discover the World, Our International Journey</p>
                 <Link to={'/international-trips'}>
                     <button
                         className="flex cursor-pointer items-center gap-2 bg-[#111111] text-white px-6 py-3 rounded-lg font-semibold shadow hover:bg-[#3a3732] transition-all w-fit"
