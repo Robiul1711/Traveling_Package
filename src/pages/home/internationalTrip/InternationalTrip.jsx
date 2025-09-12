@@ -9,7 +9,7 @@ import { useMediaQuery } from 'react-responsive';
 import { Link, ScrollRestoration } from 'react-router-dom';
 import CommonBanner from '@/components/common/CommonBanner';
 import { ImageAssets } from '@/utils/ImageProvider';
-import { useGetAllProducts } from '@/hooks/ProductHooks';
+import { useGetAllInternationalProducts } from '@/hooks/ProductHooks';
 
 const InternationalTripCard = ({ trip }) => {
     return (
@@ -108,7 +108,7 @@ const InternationalTripCard = ({ trip }) => {
 const InternationalTrip = () => {
     const [showFilter, setShowFilter] = useState(true);
     const isDesktopOrLaptop = useMediaQuery({ maxWidth: 992 })
-    const { data: products } = useGetAllProducts();
+    const { data: products } = useGetAllInternationalProducts();
 
     useEffect(() => {
         if (isDesktopOrLaptop) {
