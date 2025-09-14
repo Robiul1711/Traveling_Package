@@ -96,7 +96,7 @@ const LocalTripCard = ({ trip }) => {
             </div>
 
             {/* Button */}
-            <Link to={'/trip-details'}>
+            <Link to={`/trip-details/${trip?.id}`}>
                 <button className="mt-3 cursor-pointer sm:mt-4 w-full flex items-center justify-center gap-2 bg-black text-white py-2 sm:py-3 rounded-lg sm:rounded-xl hover:bg-gray-900 text-sm sm:text-base">
                     View Details <FaArrowRight size={14} />
                 </button>
@@ -111,7 +111,7 @@ const LocalTrip = () => {
     const [showFilter, setShowFilter] = useState(true);
     const isDesktopOrLaptop = useMediaQuery({ maxWidth: 992 })
 
-    const { data: products } = useGetAllLocalProducts();
+    const { data: products, isLoading: isAllProductsLoading } = useGetAllLocalProducts();
 
     useEffect(() => {
         if (isDesktopOrLaptop) {
@@ -138,13 +138,24 @@ const LocalTrip = () => {
                     </div>
 
                     <div className="w-full xmd:w-[70%]">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 xlg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                            {
-                                products?.map((trip) => (
-                                    <LocalTripCard key={trip.id} trip={trip} />
-                                ))
-                            }
-                        </div>
+                        {
+                            isAllProductsLoading ?
+                                <div className="grid grid-cols-1 sm:grid-cols-2 xlg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+
+                                    <div className="bg-gray-300 animate-pulse h-96 rounded-xl shadow-xl border"></div>
+                                    <div className="bg-gray-300 animate-pulse h-96 rounded-xl shadow-xl border"></div>
+                                    <div className="bg-gray-300 animate-pulse h-96 rounded-xl shadow-xl border"></div>
+                                </div>
+                                :
+                                <div className="grid grid-cols-1 sm:grid-cols-2 xlg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                                    {
+                                        products?.map((trip) => (
+                                            <LocalTripCard key={trip.id} trip={trip} />
+                                        ))
+                                    }
+                                </div>
+                        }
+
                     </div>
                 </div>
             </div>

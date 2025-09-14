@@ -13,7 +13,8 @@ import { HiCurrencyDollar } from "react-icons/hi2";
 import GetTravelDeal from '@/components/contact_components/GetTravelDeal';
 import Availability from './Availability';
 import ITINERARY from './ITINERARY';
-import { ScrollRestoration } from 'react-router-dom';
+import { ScrollRestoration, useParams } from 'react-router-dom';
+import { useGetSingleProduct } from '@/hooks/ProductHooks';
 
 const testimonials = [
     {
@@ -66,52 +67,67 @@ const testimonials = [
 
 const TripDetails = () => {
     const swiperRef = useRef(null);
+    const { id } = useParams();
+    const { data, isLoading: isSingleProductLoading } = useGetSingleProduct(id);
+    console.log(data);
+    console.log(isSingleProductLoading)
 
     return (
         <div>
             <ScrollRestoration />
-            <CommonBanner title="Grand Greece Adventure" image={ImageAssets.tripDetailsBanner} />
+            {
+                isSingleProductLoading ?
+                    <div className="bg-gray-300 animate-pulse h-96 rounded-xl shadow-xl border"></div>
+                    :
+                    <CommonBanner title={data?.name} image={data?.main_image_url} />
+            }
             <div className=""
                 style={{ backgroundImage: `url(${ImageAssets.particalBg})` }}
             >
-                <Swiper
-                    modules={[Navigation]}
-                    onSwiper={(swiper) => {
-                        swiperRef.current = swiper;
-                    }}
-                    slidesPerView={2}
-                    spaceBetween={20}
-                    pagination={{ clickable: true }}
+                {
+                    data?.additional_images?.length > 0 &&
+                    <Swiper
+                        modules={[Navigation]}
+                        onSwiper={(swiper) => {
+                            swiperRef.current = swiper;
+                        }}
+                        slidesPerView={2}
+                        spaceBetween={20}
+                        pagination={{ clickable: true }}
 
-                    breakpoints={{
-                        0: { slidesPerView: 3 },
-                        768: { slidesPerView: 5 },
-                    }}
-                    className="testimonial-swiper !p-5"
-                >
-                    {testimonials.map((t, i) => (
-                        <SwiperSlide key={i}>
-                            <div className="">
-                                <img
-                                    src={t.image}
-                                    alt={t.name}
-                                    className="  object-cover"
-                                />
+                        breakpoints={{
+                            0: { slidesPerView: 3 },
+                            768: { slidesPerView: 5 },
+                        }}
+                        className="testimonial-swiper !p-5"
+                    >
+                        {testimonials.map((t, i) => (
+                            <SwiperSlide key={i}>
+                                <div className="">
+                                    <img
+                                        src={t.image}
+                                        alt={t.name}
+                                        className="  object-cover"
+                                    />
 
-                            </div>
-                        </SwiperSlide>
-                    ))}
+                                </div>
+                            </SwiperSlide>
+                        ))}
 
 
-                </Swiper>
+                    </Swiper>
+                }
+
+
                 <CommonPageWrapper>
                     <div className="space-y-5">
                         <p className="text-2xl xlg:text-4xl font-semibold">OVERVIEW</p>
-                        <p className="text-sm xlg:text-xl">
-                            Embark on a 8-day journey through the heart and soul of Greece, where ancient wonders meet stunning landscapes and timeless traditions. Begin in Athens, the cradle of democracy, where ancient ruins stand proudly among bustling neighborhoods. Travel to Meteora, where majestic monasteries perch atop towering rock formations, and then venture south to Crete, Greece’s largest island, full of mythical palaces, mountain trails, and coastal charm. Enjoy wine tastings, scenic hikes, cultural workshops, and incredible local cuisine in a tour perfect for history buffs, nature lovers, and adventurous travelers alike.
+                        <p className="text-sm xlg:text-xl" {...{ dangerouslySetInnerHTML: { __html: data?.description_ecommerce } }}>
                         </p>
 
-                        <div className="flex flex-wrap gap-5 items-center">
+
+
+                        {/* <div className="flex flex-wrap gap-5 items-center">
                             <div className="flex gap-2">
                                 <TiLocation className='text-2xl text-[#006C9A]' />
                                 <p>Greece</p>
@@ -133,7 +149,7 @@ const TripDetails = () => {
                             </div>
 
                             <button className='bg-[#614836] text-white px-4 py-2 rounded-md'>Book Now</button>
-                        </div>
+                        </div> */}
                     </div>
                     <Availability />
                     <ITINERARY />

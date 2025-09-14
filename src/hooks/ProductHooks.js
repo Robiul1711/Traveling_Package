@@ -26,3 +26,15 @@ export const useGetAllLocalProducts = () => {
         }
     });
 }
+
+export const useGetSingleProduct = (id) => {
+    const axiosPublic = useAxiosPublic();
+
+    return useQuery({
+        queryKey: ["single-product", id],
+        queryFn: async ()=>{
+            const response = await axiosPublic.get(`/products/details/${id}`);
+            return response?.data?.data;
+        }
+    });
+}
