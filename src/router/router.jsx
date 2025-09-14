@@ -83,7 +83,7 @@ const router = createBrowserRouter([
         element: <LocalTrip />
       },
       {
-        path: "/trip-details",
+        path: "/trip-details/:id",
         element: <TripDetails />
       },
       {
