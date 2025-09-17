@@ -42,7 +42,7 @@ const teamMembers = [
 
 export default function MeetTheTeam() {
   return (
-    <section className="bg-[#FAF8F3] py-12 section-padding-x">
+    <section className="bg-[#F4F4F4] py-12 section-padding-x">
         <h2 className="text-2xl font-bold mb-8">Meet The Team</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
